@@ -1,0 +1,44 @@
+:root{--navy:#1f2f4a;--red:#8b1e1e;--cream:#f6efe0;--gold:#e8a33d;--brown:#3a2618;--muted:#6b5442;--card:#fffaf0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--brown);font-family:Inter,system-ui,sans-serif;line-height:1.5}
+a{color:var(--red)}
+.hero{position:relative;color:var(--cream);overflow:hidden}
+.scene{display:block;width:100%;height:300px}
+.hero-text{position:absolute;inset:0;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding:0 6vw}
+.kicker{font-family:"Cormorant SC",Georgia,serif;letter-spacing:.25em;font-size:.95rem;margin:0 0 .3rem;color:#f4c46a}
+h1{font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:clamp(2rem,5.4vw,3.8rem);line-height:1.05;margin:0;text-shadow:0 3px 0 rgba(0,0,0,.35);max-width:14ch}
+.ribbon{margin-top:.9rem;position:relative;background:var(--red);padding:.35rem 1.4rem;font-family:"Cormorant SC",Georgia,serif;letter-spacing:.18em;font-size:1rem}
+.ribbon::before,.ribbon::after{content:"";position:absolute;top:0;border:1.05rem solid var(--red);border-left-color:transparent}
+.ribbon::before{left:-1.2rem}.ribbon::after{right:-1.2rem;transform:scaleX(-1)}
+.stars{text-align:center;color:var(--red);letter-spacing:1em;margin:1.2rem 0 .2rem;font-size:1.1rem}
+.wrap{max-width:1150px;margin:0 auto;padding:1rem 1.2rem 2rem;display:grid;gap:1.2rem;grid-template-columns:1.1fr 1fr}
+.notes{grid-column:1/-1}
+@media(max-width:860px){.wrap{grid-template-columns:1fr}}
+.panel{background:var(--card);border:2px solid var(--navy);border-radius:6px;padding:1.3rem 1.5rem;box-shadow:6px 6px 0 var(--navy)}
+h2{font-family:"Playfair Display",Georgia,serif;font-size:1.7rem;margin:0;color:var(--navy)}
+.sub{font-family:"Cormorant SC",Georgia,serif;letter-spacing:.14em;color:var(--red);margin:.1rem 0 1rem}
+.presets{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+button{font:600 .9rem Inter,sans-serif;border:2px solid var(--navy);background:var(--cream);color:var(--navy);border-radius:999px;padding:.45rem .9rem;cursor:pointer}
+button:hover{background:var(--navy);color:var(--cream)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.field{margin-bottom:.85rem}
+.field label{display:flex;justify-content:space-between;gap:.6rem;font-weight:600;font-size:.92rem}
+.field small{display:block;color:var(--muted);font-weight:400;font-size:.78rem}
+output{font-variant-numeric:tabular-nums;color:var(--red);white-space:nowrap}
+input[type=range]{width:100%;accent-color:var(--red);height:26px}
+details{border-top:1px dashed var(--muted);padding-top:.6rem}
+summary{cursor:pointer;font-family:"Cormorant SC",Georgia,serif;letter-spacing:.12em;color:var(--navy);margin-bottom:.6rem}
+.price{font-family:"Playfair Display",Georgia,serif;font-weight:900;font-size:clamp(3rem,7vw,4.4rem);color:var(--navy);margin:.2rem 0 0;font-variant-numeric:tabular-nums}
+.era{margin:0;color:var(--muted);font-family:"Cormorant SC",Georgia,serif;letter-spacing:.12em}
+.range{margin:.8rem 0 .4rem}
+.note{color:var(--muted);font-size:.85rem}
+.scale{position:relative;height:12px;background:repeating-linear-gradient(90deg,var(--red) 0 14px,var(--cream) 14px 28px);border:2px solid var(--navy);border-radius:2px}
+.scale span{position:absolute;top:-2px;bottom:-2px;background:rgba(232,163,61,.75);border:2px solid var(--gold);transition:all .3s}
+.scale i{position:absolute;top:-8px;width:4px;height:24px;margin-left:-2px;background:var(--navy);transition:left .3s}
+.scale-lbl{display:flex;justify-content:space-between;font-size:.78rem;color:var(--muted);margin:.2rem 0 1rem}
+.mini{font-family:"Cormorant SC",Georgia,serif;letter-spacing:.12em;font-size:1rem;color:var(--navy);margin:0 0 .4rem}
+canvas{width:100%;height:auto;background:var(--cream);border:1px solid #e3d6bd;border-radius:4px}
+.pct{color:var(--muted);font-size:.9rem;margin:.4rem 0 0}
+.fine{font-size:.85rem;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:0 1rem 2rem;font-size:.9rem}
+@media(prefers-reduced-motion:reduce){.scene animate{display:none}*{transition:none!important}}
