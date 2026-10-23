@@ -139,6 +139,16 @@ Economics and Management*, 5, 81–102. `boston_housing_3features.csv` is a comm
 ## ⚖️ Licence
 Code and docs: MIT © 2026 Rishabh Aryan. Data: see above (not covered by the MIT licence).
 
+## 🏠 Real Estate ML Trilogy
+
+Three capstone projects from my training with KF Property Network Pte Ltd (KFPN), each predicting home values in a different market with the same honest workflow: repeated K-fold CV, a log target, permutation importance, FastAPI, Docker, CI and an in-browser app.
+
+| Part | Repository | Market and data | Live app | Deployed model, repeated K-fold CV |
+|---|---|---|---|---|
+| I | [real-estate-valuation-taiwan](https://github.com/Rishabh-bgp/real-estate-valuation-taiwan) | Xindian, New Taipei: 414 sales, 2012–13 | [▶ open](https://rishabh-bgp.github.io/real-estate-valuation-taiwan/) | R² 0.715, RMSE 7.136, MAE 4.551 (10k TWD per ping) |
+| II | [boston-house-price-prediction](https://github.com/Rishabh-bgp/boston-house-price-prediction) | Boston: 506 census tracts, 1970 (race feature B excluded) | [▶ open](https://rishabh-bgp.github.io/boston-house-price-prediction/) | R² 0.877, RMSE 3.157, MAE 2.119 ($1000s) |
+| III | [california-house-price-prediction](https://github.com/Rishabh-bgp/california-house-price-prediction) | California: 20,640 block groups, 1990 census | [▶ open](https://rishabh-bgp.github.io/california-house-price-prediction/) | R² 0.840, RMSE 0.461, MAE 0.291 ($100k) |
+
 ## 🔗 Other repositories by Rishabh Aryan
 
 | Repository | Description | Live |
@@ -148,6 +158,7 @@ Code and docs: MIT © 2026 Rishabh Aryan. Data: see above (not covered by the MI
 | [beed-ml-study](https://github.com/Rishabh-bgp/beed-ml-study) | Provenance audit and leakage-aware benchmark of seizure-type classifiers on the Bangalore EEG Epilepsy Dataset — IIT… | — |
 | [Brain-Computer-Interfaces-and-Cognitive-Computing-An-Introduction](https://github.com/Rishabh-bgp/Brain-Computer-Interfaces-and-Cognitive-Computing-An-Introduction) | Brain–computer interfaces (BCIs) link neural activity to external devices, translating brain signals via algorithms… | — |
 | [building-a-virtual-cell-in-python](https://github.com/Rishabh-bgp/building-a-virtual-cell-in-python) | A cell has a normal gene-activity pattern. Knock out one gene and that pattern changes. This project trains a small… | — |
+| [california-house-price-prediction](https://github.com/Rishabh-bgp/california-house-price-prediction) | California house price prediction with machine learning: scikit-learn gradient boosting, repeated K-fold and spatial… | [open](https://rishabh-bgp.github.io/california-house-price-prediction/) |
 | [Chronic-Kidney-Disease-Stage-Identification-in-HIV-Infected-Patients-Using-Supervised-ML](https://github.com/Rishabh-bgp/Chronic-Kidney-Disease-Stage-Identification-in-HIV-Infected-Patients-Using-Supervised-ML) | ML is transforming Chronic Kidney Disease (CKD) detection in HIV patients, catching early asymptomatic stages to… | — |
 | [cobratate](https://github.com/Rishabh-bgp/cobratate) | Cobratate, an esoteric imperative programming language. Tate-flavored syntax, ordinary semantics, and a Python… | [open](https://rishabh-bgp.github.io/cobratate/) |
 | [coda-synth](https://github.com/Rishabh-bgp/coda-synth) | CoDA-Synth: stylometric detection of LLM-rewritten dark-web documents with sparse TF-IDF + LinearSVC. Research lab,… | [open](https://shale-ember-delta-kite.grok.me/) |
