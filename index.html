@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boston House Price Prediction — Machine Learning Home Value Estimator | Rishabh Aryan</title>
+<meta name="description" content="Estimate Boston median home values with a gradient-boosted machine learning model running in your browser. Trained on the classic Boston housing data with the race-encoding B feature removed.">
+<meta name="theme-color" content="#1f2f4a">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cormorant+SC:wght@600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><path d='M10 50 50 15 90 50v40H10z' fill='%238b1e1e'/><rect x='40' y='60' width='20' height='30' fill='%23f6efe0'/></svg>">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero">
+  <svg class="scene" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMax slice" role="img" aria-label="Illustration: a sunset behind a colonial house with a tree and a waving striped flag">
+    <defs>
+      <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1f2f4a"/><stop offset=".55" stop-color="#8b4a3a"/><stop offset="1" stop-color="#e8a33d"/></linearGradient>
+      <clipPath id="flagclip"><rect x="0" y="0" width="120" height="72"/></clipPath>
+    </defs>
+    <rect width="1200" height="300" fill="url(#sky)"/>
+    <circle cx="600" cy="250" r="90" fill="#f4c46a" opacity=".9"/>
+    <g fill="#f6efe0" opacity=".85"><circle cx="140" cy="40" r="1.6"/><circle cx="260" cy="70" r="1.2"/><circle cx="980" cy="50" r="1.5"/><circle cx="1080" cy="90" r="1.1"/><circle cx="420" cy="30" r="1.1"/></g>
+    <path d="M0 270 Q300 240 600 262 T1200 255 V300 H0Z" fill="#2a1d14"/>
+    <!-- tree -->
+    <g fill="#2a1d14"><rect x="214" y="180" width="10" height="90"/><circle cx="219" cy="170" r="38"/><circle cx="192" cy="190" r="26"/><circle cx="248" cy="188" r="28"/></g>
+    <!-- colonial house -->
+    <g fill="#2a1d14">
+      <path d="M760 268 V170 L860 110 L960 170 V268Z"/>
+      <rect x="905" y="100" width="18" height="40"/>
+      <path d="M840 150 L860 132 L880 150Z" fill="#e8a33d" opacity=".9"/>
+      <g fill="#f4c46a" opacity=".9"><rect x="785" y="190" width="22" height="26"/><rect x="913" y="190" width="22" height="26"/><rect x="785" y="228" width="22" height="26"/><rect x="913" y="228" width="22" height="26"/><rect x="848" y="220" width="24" height="48"/></g>
+      <path d="M740 175 L860 104 L980 175" stroke="#8b1e1e" stroke-width="6" fill="none"/>
+    </g>
+    <!-- flag -->
+    <rect x="1040" y="110" width="4" height="160" fill="#2a1d14"/>
+    <g transform="translate(1044 112)">
+      <g clip-path="url(#flagclip)">
+        <path id="wave" fill="#8b1e1e">
+          <animate attributeName="d" dur="2.4s" repeatCount="indefinite"
+            values="M0 0 Q30 -6 60 0 T120 0 V72 Q90 78 60 72 T0 72Z;M0 0 Q30 6 60 0 T120 0 V72 Q90 66 60 72 T0 72Z;M0 0 Q30 -6 60 0 T120 0 V72 Q90 78 60 72 T0 72Z"/>
+        </path>
+        <g fill="#f6efe0"><rect y="11" width="120" height="5.5"/><rect y="22" width="120" height="5.5"/><rect y="33" width="120" height="5.5"/><rect y="44" width="120" height="5.5"/><rect y="55" width="120" height="5.5"/><rect y="66" width="120" height="5.5"/></g>
+        <rect width="50" height="38" fill="#1f2f4a"/>
+        <g fill="#f6efe0"><circle cx="9" cy="8" r="2"/><circle cx="21" cy="8" r="2"/><circle cx="33" cy="8" r="2"/><circle cx="45" cy="8" r="2"/><circle cx="15" cy="18" r="2"/><circle cx="27" cy="18" r="2"/><circle cx="39" cy="18" r="2"/><circle cx="9" cy="28" r="2"/><circle cx="21" cy="28" r="2"/><circle cx="33" cy="28" r="2"/><circle cx="45" cy="28" r="2"/></g>
+      </g>
+    </g>
+  </svg>
+  <div class="hero-text">
+    <p class="kicker">Est. by machine learning · Boston, Massachusetts</p>
+    <h1>Boston House Price Estimator</h1>
+    <div class="ribbon"><span>Home values, estimated honestly</span></div>
+  </div>
+</header>
+
+<div class="stars" aria-hidden="true">★ ★ ★</div>
+
+<main class="wrap">
+  <section class="panel inputs" aria-labelledby="h-in">
+    <h2 id="h-in">The Neighbourhood</h2>
+    <p class="sub">Census-tract characteristics, as recorded in 1970</p>
+    <div class="presets" role="group" aria-label="Load a real tract from the data"></div>
+    <div id="main-sliders"></div>
+    <details><summary>More characteristics</summary><div id="more-sliders"></div></details>
+  </section>
+
+  <section class="panel result" aria-labelledby="h-out" aria-live="polite">
+    <h2 id="h-out">The Estimate</h2>
+    <p class="sub">Median value of owner-occupied homes</p>
+    <p class="price"><span id="price">—</span></p>
+    <p class="era">in 1970 US dollars</p>
+    <p class="range">5–95% quantile range <strong id="range">—</strong> <span class="note" id="cov"></span></p>
+    <div class="scale" aria-hidden="true"><span id="band"></span><i id="pin"></i></div>
+    <p class="scale-lbl"><span>$5k</span><span>$50k (data cap)</span></p>
+    <h3 class="mini">Where it sits among 506 tracts</h3>
+    <canvas id="hist" width="520" height="170" role="img" aria-label="Histogram of median home values in the dataset with your estimate marked"></canvas>
+    <p class="pct" id="pct"></p>
+  </section>
+
+  <section class="panel notes" aria-labelledby="h-notes">
+    <h2 id="h-notes">Fair Housing Note</h2>
+    <p>The original data contain a column <b>B</b> derived from the share of Black residents in each town. It encodes race, so it was <b>removed</b> from this model. <b>LSTAT</b> (share of "lower status" residents) is kept as a neighbourhood socioeconomic measure, with that caveat. Values are capped at $50k in the source data and reflect 1970, not today.</p>
+    <p class="fine">Personal portfolio project using a public dataset; not affiliated with or endorsed by any company.</p>
+  </section>
+</main>
+
+<footer>
+  <div class="stars" aria-hidden="true">★ ★ ★</div>
+  <p>Built by <a href="https://github.com/Rishabh-bgp">Rishabh Aryan</a> · Capstone, NIELIT Ropar × IIT Ropar AI &amp; ML programme · <a href="https://github.com/Rishabh-bgp/boston-house-price-prediction">Source on GitHub</a></p>
+</footer>
+<script src="app.js"></script>
+</body>
+</html>
